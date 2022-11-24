@@ -6,7 +6,7 @@
 /*   By: dofranci <dofranci@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:11:01 by dofranci          #+#    #+#             */
-/*   Updated: 2022/11/14 14:12:17 by dofranci         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:03:41 by dofranci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 int fork_function1(t_data *data, char *argv[], char *envp[])
 {
+	if(command(argv[2], envp, data) == -1)
+		{
+			ft_printf("Command 1 not found\n");
+			return(1);
+		}
 	data->pid = fork();
 	if(fork_error(data->pid))
 		return(3);
@@ -23,13 +28,25 @@ int fork_function1(t_data *data, char *argv[], char *envp[])
 		dup2(data->pipefd[1], STDOUT_FILENO); // se -1 = erro
 		close(data->pipefd[0]);
 		close(data->pipefd[1]);
-		execute(argv[2], envp);
+		if(execute(envp, data) == 1)
+		{
+			freematriz(data->matrizpath);
+			freematriz(data->cmd);
+			return(2);
+		}
 	}
+	freematriz(data->matrizpath);
+	freematriz(data->cmd);
 	return(0);
 }
 
 int fork_function2(t_data *data, char *argv[], char *envp[])
 {
+	if(command(argv[3], envp, data) == -1)
+	{
+		ft_printf("Command 2 not found\n");
+		return(1);
+	}
 	data->pid = fork();
 	if(fork_error(data->pid))
 		return(3);
@@ -39,7 +56,8 @@ int fork_function2(t_data *data, char *argv[], char *envp[])
 		dup2(data->fd, STDOUT_FILENO);
 		close(data->pipefd[0]);
 		close(data->pipefd[1]);
-		execute(argv[3], envp);
+		if(execute(envp, data) == 1)
+			return(2);
 	}
 	return(0);
 }
