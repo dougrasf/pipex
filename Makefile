@@ -5,7 +5,7 @@ NAME = pipex
 INC = -I ./include
 
 SRC =	./src/main.c \
-		./src/error.c \
+		./src/utils.c \
 		./src/fork.c \
 
 LIBFTPATH = ./libft

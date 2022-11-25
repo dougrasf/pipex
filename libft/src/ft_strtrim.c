@@ -6,19 +6,16 @@
 /*   By: dofranci <dofranci@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 19:17:32 by dofranci          #+#    #+#             */
-/*   Updated: 2022/06/24 17:53:01 by dofranci         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:39:02 by dofranci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
-
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	size;
-	
+
 	if (s1 == NULL || set == NULL)
 		return (NULL);
 	while (*s1 && ft_strchr(set, *s1))

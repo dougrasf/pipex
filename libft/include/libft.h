@@ -6,16 +6,16 @@
 /*   By: dofranci <dofranci@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 20:36:20 by dofranci          #+#    #+#             */
-/*   Updated: 2022/09/13 21:19:47 by dofranci         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:48:43 by dofranci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -56,12 +56,12 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*get_next_line(int fd);
-int	    ft_printf(const char *format, ...);
-int	    ft_putnbr2(unsigned int n);
-int	    ft_putnbr(int n);
-int	    ft_putptr2(unsigned long int n);
-int	    ft_putptr(unsigned long long int n);
-int     ft_putx(unsigned int n, char conv);
-int     ft_putchar(char c);
+int		ft_printf(const char *format, ...);
+int		ft_putnbr2(unsigned int n);
+int		ft_putnbr(int n);
+int		ft_putptr2(unsigned long int n);
+int		ft_putptr(unsigned long long int n);
+int		ft_putx(unsigned int n, char conv);
+int		ft_putchar(char c);
 
 #endif
